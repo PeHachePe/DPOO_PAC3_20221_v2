@@ -15,7 +15,7 @@ public class Trailer {
 
     private LocalDate releaseDate;
 
-    public Trailer(String url, int duration, LocalDate releaseDate) {
+    public Trailer(String url, int duration, LocalDate releaseDate) throws Exception {
         setUrl(url);
         setDuration(duration);
         setReleaseDate(releaseDate);
@@ -33,11 +33,14 @@ public class Trailer {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(int duration) throws Exception {
+        if (duration <= 0 || duration > MAX_DURATION)
+            throw new Exception(ERR_DURATION);
         this.duration = duration;
     }
 
     public String getFormattedDuration() {
+        assert duration > 0;
         int minutes = duration / 60;
         int seconds = duration % 60;
         return String.format("%02d:%02d", minutes, seconds);
@@ -47,7 +50,9 @@ public class Trailer {
         return releaseDate;
     }
 
-    public void setReleaseDate(LocalDate releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) throws Exception {
+        if (releaseDate == null || releaseDate.isAfter(LocalDate.now()))
+            throw new Exception(ERR_RELEASE);
         this.releaseDate = releaseDate;
     }
 }

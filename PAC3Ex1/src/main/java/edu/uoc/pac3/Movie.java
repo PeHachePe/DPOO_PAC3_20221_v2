@@ -89,6 +89,10 @@ public class Movie {
     }
 
     public void setTrailer(String url, int duration, LocalDate releaseDate) {
-        this.trailer = new Trailer(url, duration, releaseDate);
+        try {
+            this.trailer = new Trailer(url, duration, releaseDate);
+        } catch (Exception e) {
+            System.out.println(e.getMessage()); //ToDo Revisar si esto es correcto
+        }
     }
 }
