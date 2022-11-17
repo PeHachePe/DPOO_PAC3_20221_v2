@@ -7,6 +7,9 @@ public class Movie {
     private static final int MAX_SUMMARY_LENGTH = 450;
     public static final String ERR_DURATION = "[ERROR] The duration of the movie cannot be 0 or negative";
     public static final String ERR_SUMMARY_LENGTH = "[ERROR] Summary's length cannot be greater than " + MAX_SUMMARY_LENGTH + " characters";
+    public static final String ERR_WRONG_INDEX = "[ERROR] Wrong index";
+    public static final String ERR_THEATER_EXISTS = "[ERROR] Movie already exists in this theater";
+    public static final int MAX_THEATERS = 5;
 
     private UUID id;
 
@@ -21,6 +24,8 @@ public class Movie {
     private boolean ov;
 
     private Trailer trailer;
+
+    private Theater[] theaters;
 
     public Movie(String title, String summary, int duration, LocalDate releaseDate, boolean ov) throws Exception {
         setId();
@@ -99,5 +104,38 @@ public class Movie {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private Theater[] getTheaters() {
+        return theaters;
+    }
+
+    public Theater getTheater(int index) {
+        return getTheaters()[index];
+    }
+
+    public boolean isInTheTheater(Theater theater) {
+        return findTheaterIndex(theater) != -1;
+    }
+
+    private int findTheaterIndex(Theater theater) {
+        for (int i = 0; i < getTheaters().length; i++) {
+            if (getTheaters()[i].equals(theater))
+                return i;
+        }
+        return -1;
+    }
+
+    private void setTheater(int index, Theater theater) throws Exception {
+        getTheaters()[index] = theater;
+    }
+
+    public void addTheater(Theater theater) throws Exception {
+    }
+
+    public void removeTheater(Theater theater) throws Exception {
+    }
+
+    public void notInTheaters() {
     }
 }
