@@ -29,7 +29,7 @@ public class Movie {
         setDuration(duration);
         setReleaseDate(releaseDate);
         setOv(ov);
-        setTrailer(null, 0, null);
+        this.trailer = null;
     }
 
     public Movie(String title, String summary, int duration, LocalDate releaseDate, boolean ov, String url, int trailerDuration, LocalDate trailerReleaseDate) throws Exception {
