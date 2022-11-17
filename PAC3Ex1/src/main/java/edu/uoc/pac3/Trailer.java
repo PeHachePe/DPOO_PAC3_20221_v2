@@ -16,9 +16,9 @@ public class Trailer {
     private LocalDate releaseDate;
 
     public Trailer(String url, int duration, LocalDate releaseDate) {
-        this.url = url;
-        this.duration = duration;
-        this.releaseDate = releaseDate;
+        setUrl(url);
+        setDuration(duration);
+        setReleaseDate(releaseDate);
     }
 
     public String getUrl() {

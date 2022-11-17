@@ -23,12 +23,12 @@ public class Movie {
     private Trailer trailer;
 
     public Movie(String title, String summary, int duration, LocalDate releaseDate, boolean ov) {
-        this.id = UUID.randomUUID();
-        this.title = title;
-        this.summary = summary;
-        this.duration = duration;
-        this.releaseDate = releaseDate;
-        this.ov = ov;
+        setId();
+        setTitle(title);
+        setSummary(summary);
+        setDuration(duration);
+        setReleaseDate(releaseDate);
+        setOv(ov);
     }
 
     public Movie(String title, String summary, int duration, LocalDate releaseDate, boolean ov, String url, int trailerDuration, LocalDate trailerReleaseDate) {
@@ -40,8 +40,8 @@ public class Movie {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setId() {
+        this.id = UUID.randomUUID();
     }
 
     public String getTitle() {
