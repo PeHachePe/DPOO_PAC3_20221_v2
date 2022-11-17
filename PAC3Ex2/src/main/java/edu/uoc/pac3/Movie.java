@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class Movie {
-    public static final String ERR_DURATION = "[ERROR] The duration of the movie cannot be 0 or negative";
     private static final int MAX_SUMMARY_LENGTH = 450;
+    public static final String ERR_DURATION = "[ERROR] The duration of the movie cannot be 0 or negative";
     public static final String ERR_SUMMARY_LENGTH = "[ERROR] Summary's length cannot be greater than " + MAX_SUMMARY_LENGTH + " characters";
 
     private UUID id;

@@ -4,9 +4,7 @@ import java.time.LocalDate;
 
 public class Trailer {
     public static final int MAX_DURATION = 180;
-
     public static final String ERR_DURATION = "[ERROR] The duration of the trailer cannot be 0, negative or greater than " + MAX_DURATION;
-
     public static final String ERR_RELEASE = "[ERROR] The release of the trailer cannot be null or a date that is later than today";
 
     private String url;
