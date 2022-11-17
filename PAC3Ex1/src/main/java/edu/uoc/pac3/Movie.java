@@ -22,16 +22,17 @@ public class Movie {
 
     private Trailer trailer;
 
-    public Movie(String title, String summary, int duration, LocalDate releaseDate, boolean ov) {
+    public Movie(String title, String summary, int duration, LocalDate releaseDate, boolean ov) throws Exception {
         setId();
         setTitle(title);
         setSummary(summary);
         setDuration(duration);
         setReleaseDate(releaseDate);
         setOv(ov);
+        setTrailer(null, 0, null);
     }
 
-    public Movie(String title, String summary, int duration, LocalDate releaseDate, boolean ov, String url, int trailerDuration, LocalDate trailerReleaseDate) {
+    public Movie(String title, String summary, int duration, LocalDate releaseDate, boolean ov, String url, int trailerDuration, LocalDate trailerReleaseDate) throws Exception {
         this(title, summary, duration, releaseDate, ov);
         setTrailer(url, trailerDuration, trailerReleaseDate);
     }
@@ -40,7 +41,7 @@ public class Movie {
         return id;
     }
 
-    public void setId() {
+    private void setId() {
         this.id = UUID.randomUUID();
     }
 
@@ -56,7 +57,9 @@ public class Movie {
         return summary;
     }
 
-    public void setSummary(String summary) {
+    public void setSummary(String summary) throws Exception {
+        if (summary.length() > MAX_SUMMARY_LENGTH)
+            throw new Exception(ERR_SUMMARY_LENGTH);
         this.summary = summary;
     }
 
@@ -64,7 +67,9 @@ public class Movie {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(int duration) throws Exception {
+        if (duration <= 0)
+            throw new Exception(ERR_DURATION);
         this.duration = duration;
     }
 
@@ -92,7 +97,7 @@ public class Movie {
         try {
             this.trailer = new Trailer(url, duration, releaseDate);
         } catch (Exception e) {
-            System.out.println(e.getMessage()); //ToDo Revisar si esto es correcto
+            System.out.println(e.getMessage());
         }
     }
 }
