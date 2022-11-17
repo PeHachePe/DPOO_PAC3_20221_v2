@@ -38,9 +38,9 @@ public class Trailer {
     }
 
     public String getFormattedDuration() {
-        int hours = duration / 60;
-        int minutes = duration % 60;
-        return String.format("%02d:%02d", hours, minutes);
+        int minutes = duration / 60;
+        int seconds = duration % 60;
+        return String.format("%02d:%02d", minutes, seconds);
     }
 
     public LocalDate getReleaseDate() {
